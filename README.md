@@ -19,8 +19,7 @@ rvm install 2.4.1
 rvm use 2.4.1 --default
 ruby -v
 ```
-Si usamos Ubuntu Unity o Mint Cinnammon o Mate tendremos que darle dentro de una terminal a Editar > Preferencias de perfil >
- > Titulo y orden > y activar la casilla "Ejecutar la orden como un interprete de acceso"
+Si usamos Ubuntu Unity o Mint Cinnammon o Mate tendremos que darle dentro de una terminal a Editar -> Preferencias de perfil -> Titulo y orden -> y activar la casilla "Ejecutar la orden como un interprete de acceso"
  
 Adecuar el comando anterior a la última versión de Ruby disponible.
 El siguiente paso es instalar bundler:
