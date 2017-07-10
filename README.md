@@ -1,2 +1,5 @@
 # Rails-Code
-Proyectos y Tips para Rails
+
+Lo primero es instalar el entorno de desarrollo:
+
+
