@@ -75,6 +75,47 @@ rails -v
 # Rails 5.1.2
 ```
 
+Siguiente paso instalar PostgreSQL, para ello usaremos su repositorio:
+
+```
+sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install postgresql-common
+sudo apt-get install postgresql-9.5 libpq-dev
+```
+Y creamos un usuario para administrar y crear bases de datos, sustituir "username" por el usuario que queramos crear:
+
+```
+sudo -u postgres createuser username -s
+
+# Creamos la contraseña para ese usuario
+sudo -u postgres psql
+postgres=# \password username
+```
+
+Ahora ya podremos crear nuestra app con:
+
+```
+rails new myapp -d postgresql
+
+cd myapp
+```
+
+Modificamos el archivo config/database.yml para que apunte a nuestro usuario y contraseña de PostgreSQL creado anteriormente.
+
+Y acto seguido:
+
+```
+rake db:create
+
+rails server
+```
+
+Ahora ya podremos entrar a la dirección http://localhost:3000/ y todo debería funcionar.
+
+Información sacada de GoRails, para más detalles ir a https://gorails.com/setup/ubuntu/16.04
+
 
 
 
