@@ -65,4 +65,12 @@ Número: 3
 Número: 4
 ```
 
-Flexboxgrid es una hoja de estilo para facilitar la posicion de los elementos en la pagina en cuestion de nuestra app, lo podemos descargar de http://flexboxgrid.com/, una vez descargado, copiar el archivo flexboxgrid.css de la carpeta dist a /nuestra_app/app/assets/stylesheets
+Flexboxgrid es una hoja de estilo para facilitar la posicion de los elementos en la pagina en cuestion de nuestra app, lo podemos descargar de http://flexboxgrid.com/, una vez descargado, copiar el archivo flexboxgrid.css de la carpeta dist a /nuestra_app/app/assets/stylesheets.
+
+Por defecto Rails usara Sqlite3, para crear las tablas necesarias para nuestra app, ya sea Sqlite3, PostgreSQL o Mysql, con el comando:
+
+```
+rake db:create
+```
+
+Nos las creará
