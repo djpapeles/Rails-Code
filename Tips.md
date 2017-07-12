@@ -239,3 +239,154 @@ html,body{
     padding: 10px 10px;
 }
 ```
+Ahora vamos a cambiar los colores de fondo y letra por unos customizados desde https://color.adobe.com/ y cambiamos nuestro style por ejemplo al siguiente codigo:
+
+```scss
+html,body{
+    margin: opx;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+.be-red{
+    background-color: #CC2616;
+}
+
+.white{
+    color: #CFD3E8;
+}
+
+.large-padding{
+    padding: 10px 10px;
+}
+```
+Vamos a quitar para que los vinculos visitados no cambien de color ni se subrayen, agregaremos lo siguiente:
+
+```scss
+a,a:visited{
+    color:inherit !important;
+    text-decoration: none;
+}
+```
+
+Quedando asi:
+
+```scss
+html,body{
+    margin: opx;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+a,a:visited{
+    color:inherit !important;
+    text-decoration: none;
+}
+
+.be-red{
+    background-color: #CC2616;
+}
+
+.white{
+    color: #CFD3E8;
+}
+
+.large-padding{
+    padding: 10px 10px;
+}
+```
+
+Añadiremos el logo en todas las paginas de nuestro blog en este caso o cualquier app, en nuestro layout application.html.erb, el siguiente codigo:
+
+```erb
+<li class="col-md">
+    <h1 class="no-margin" id="logo">Blog</h1>
+</li>
+```
+Quedando asi:
+
+```erb
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Blog</title>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <header>
+          <nav class ="be-red white large-padding">
+              <ul style="list-style: none;" class="no-list row center-xs">
+                  <li class="col-md">
+                      <h1 class="no-margin" id="logo">Blog</h1>
+                  </li>
+                  <li class="col-md">
+                      <%= link_to "Inicio", root_path %>
+                  </li>
+                  <li class="col-md">
+                      Diseño
+                  </li>
+                  <li class="col-md">
+                      Programacion
+                  </li>
+                  <li class="col-md">
+                      Tecnologia
+                  </li>
+              </ul>
+          </nav>
+      </header>   
+    
+    <%= yield %>
+  </body>
+</html>
+```
+Añadiremos tambien a nuestro style.scss:
+
+```scss
+#logo{
+    font-size: 1.2em;
+}
+
+.no-margin{
+    margin: 0px;
+}
+```
+
+Quedando asi:
+
+```scss
+html,body{
+    margin: opx;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+a,a:visited{
+    color:inherit !important;
+    text-decoration: none;
+}
+
+#logo{
+    font-size: 1.2em;
+}
+
+.no-margin{
+    margin: 0px;
+}
+
+.be-red{
+    background-color: #CC2616;
+}
+
+.white{
+    color: #CFD3E8;
+}
+
+.large-padding{
+    padding: 10px 10px;
+}
+```
