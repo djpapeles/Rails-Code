@@ -42,7 +42,7 @@ Y esta si queremos que el codigo escrito aparezca en el view de nuestra pagina:
 
 Por ejemplo:
 
-```
+```erb
 <h1>Hola Mundo!!!</h1>
 <% [1,2,3,4].each do |number| %>
     <p>Número: <%= number %></p>
@@ -73,4 +73,169 @@ Por defecto Rails usara Sqlite3, para crear las tablas necesarias para nuestra a
 rake db:create
 ```
 
-Nos las creará
+Nos las creará.
+
+
+Los Layouts se encargan de agrupar las vistas que tienen contenido en comun, lo que cambiemos en un layout se aplicara en todas las vistas a las que este vinculado, el layout por defecto esta en /mi_app/app/views/layouts/application.html.erb.
+
+Por ejemplo para un blog podemos generar el siguiente codigo:
+
+```erb
+ <body>
+      <header>
+          <nav class ="be-red white">
+              <ul style="list-style: none;" class="no-list row center-xs">
+                  <li class="col-md">
+                      Inicio
+                  </li>
+                  <li class="col-md">
+                      Diseño
+                  </li>
+                  <li class="col-md">
+                      Programacion
+                  </li>
+                  <li class="col-md">
+                      Tecnologia
+                  </li>
+              </ul>
+          </nav>
+      </header>
+```
+Se esta usando comandos de flexboxgrid como col-md, para mas referencia buscar en la web http://flexboxgrid.com/.
+
+Para los enlaces de las categorias podemos usar:
+
+```erb
+ <%= link_to "Inicio", root_path %>
+ ```
+ por ejemplo para dirigir la seccion Inicio a nuestra pagina de inicio, quedando nuestro archivo application.html.erb asi:
+ 
+ ```erb
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <header>
+          <nav class ="be-red white">
+              <ul style="list-style: none;" class="no-list row center-xs">
+                  <li class="col-md">
+                      <%= link_to "Inicio", root_path %>
+                  </li>
+                  <li class="col-md">
+                      Diseño
+                  </li>
+                  <li class="col-md">
+                      Programacion
+                  </li>
+                  <li class="col-md">
+                      Tecnologia
+                  </li>
+              </ul>
+          </nav>
+      </header>
+
+
+
+    
+    
+    <%= yield %>
+  </body>
+</html>
+```
+
+Crearemos nuestra hoja de estilos personalizada en /mi_app/app/assets/stylesheets/style.scss y la dejaremos por ejemplo asi:
+
+```scss
+html,body{
+    margin: opx;
+}
+
+.be-red{
+    background-color: rgb(200,50,50);
+}
+
+.white{
+    color: white;
+}
+
+.large-padding{
+    padding: 10px 10px;
+}
+```
+Lo modificaremos a nuestro gusto consultar Lenguaje CSS para adecuarlo a nuestras necesidades.
+
+Lo siguiente sera modificar la fuente de nuestra app, la usaremos desde https://fonts.google.com/ y para nuestro ejemplo usaremos Open Sans, copiaremos el siguiente codigo:
+
+```erb
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+```
+En nuestro Layout application.html.erb quedando asi:
+
+```erb
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Blog</title>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <header>
+          <nav class ="be-red white large-padding">
+              <ul style="list-style: none;" class="no-list row center-xs">
+                  <li class="col-md">
+                      <%= link_to "Inicio", root_path %>
+                  </li>
+                  <li class="col-md">
+                      Diseño
+                  </li>
+                  <li class="col-md">
+                      Programacion
+                  </li>
+                  <li class="col-md">
+                      Tecnologia
+                  </li>
+              </ul>
+          </nav>
+      </header>
+    
+    <%= yield %>
+  </body>
+</html>
+```
+Ahora copiaremos el codigo:
+```scss
+font-family: 'Open Sans', sans-serif;
+```
+En nuestro style.scss quedando asi:
+
+```scss
+html,body{
+    margin: opx;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+.be-red{
+    background-color: rgb(200,50,50);
+}
+
+.white{
+    color: white;
+}
+
+.large-padding{
+    padding: 10px 10px;
+}
+```
