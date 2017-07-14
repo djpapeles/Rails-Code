@@ -1,3 +1,5 @@
+## Creacion de la app
+
 Generamos un archivo index:
 
 ```
@@ -14,13 +16,13 @@ Y los archivos generados serán:
 En config/routes.erb podremos configurar como manejar las rutas en nuestra aplicacion.
 Una de las rutas mas importantes es la de el root del sitio, que es donde queremos que apunte nuestra app para la pagina por defecto, si queremos apuntar a nuestro index, añadiremos:
 
-```ruby
+```erb
 root 'welcome#index'
 ```
 
 Quedando mas o menos asi:
 
-```ruby
+```erb
 Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
@@ -75,6 +77,7 @@ rake db:create
 
 Nos las creará.
 
+## Layouts
 
 Los Layouts se encargan de agrupar las vistas que tienen contenido en comun, lo que cambiemos en un layout se aplicara en todas las vistas a las que este vinculado, el layout por defecto esta en /mi_app/app/views/layouts/application.html.erb.
 
@@ -140,10 +143,6 @@ Para los enlaces de las categorias podemos usar:
               </ul>
           </nav>
       </header>
-
-
-
-    
     
     <%= yield %>
   </body>
@@ -390,3 +389,4 @@ a,a:visited{
     padding: 10px 10px;
 }
 ```
+## Routes
